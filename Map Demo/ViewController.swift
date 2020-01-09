@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // Define latitude and longitude
+        // Define latitude and longitud
         let latitude:CLLocationDegrees = 43.64
         let longitude:CLLocationDegrees = -79.38
         
