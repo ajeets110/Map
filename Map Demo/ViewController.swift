@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // Define latitude and longitud
+        // Define latitude and longitude
         let latitude:CLLocationDegrees = 43.64
         let longitude:CLLocationDegrees = -79.38
         
@@ -41,8 +41,22 @@ class ViewController: UIViewController {
         annotation.subtitle = "City of dreams"
         annotation.coordinate = location
         mapView.addAnnotation(annotation)
+        
+        // add long press gesture
+        let uilpgr = UILongPressGestureRecognizer(target: self, action: #selector(longpress))
+        mapView.addGestureRecognizer(uilpgr)
+        
     }
 
+    @objc func longpress(gestureRecognizer: UIGestureRecognizer){
+        let touchPoint = gestureRecognizer.location(in: mapView)
+        let coordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+        
+        let annotation = MKPointAnnotation()
+        annotation.title = "place to visit"
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
+    }
 
 }
 
